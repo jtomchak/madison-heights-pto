@@ -2,22 +2,20 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import styles from './blog.module.css'
-import Layout from "../components/layout"
+import styles from './post.module.css'
+import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
-class BlogIndex extends React.Component {
+class PostIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const posts = get(this, 'props.data.allWordpressPost.edges')
 
     return (
-      <Layout location={this.props.location} >
+      <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>
-            Blog
-          </div>
+          <div className={styles.hero}>Posts</div>
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">
@@ -36,32 +34,22 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default PostIndex
 
 export const pageQuery = graphql`
-  query BlogIndexQuery {
+  query PostIndexQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allWordpressPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
           title
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
+          date(formatString: "MMMM Do, YYYY")
+          content
         }
       }
     }

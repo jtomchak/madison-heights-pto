@@ -1,34 +1,45 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
-
-const contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  host: process.env.CONTENTFUL_HOST
-}
-
-const { spaceId, accessToken } = contentfulConfig
-
-if (!spaceId || !accessToken) {
-  throw new Error(
-    'Contentful spaceId and the access token need to be provided.'
-  )
-}
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Contentful starter',
+    title: 'Madison Heights PTO',
   },
-  pathPrefix: '/gatsby-contentful-starter',
+  pathPrefix: '/',
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-source-contentful',
-      options: contentfulConfig,
-    }
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        // your wordpress source
+        baseUrl: `content.elementcasting.com/heightspto`,
+        protocol: `https`,
+        // is it hosted on wordpress.com, or self-hosted?
+        hostingWPCOM: false,
+        // does your site use the Advanced Custom Fields Plugin?
+        useACF: true,
+      },
+      // Set how many simultaneous requests are sent at once.
+      concurrentRequests: 10,
+      includedRoutes: [
+        '**/categories',
+        '**/posts',
+        '**/pages',
+        '**/media',
+        '**/tags',
+        '**/taxonomies',
+        '**/users',
+        '**/*/*/menus',
+        '**/*/*/menu-locations',
+      ],
+      excludedRoutes: [],
+      normalizer: function({ entities }) {
+        return entities
+      },
+    },
   ],
 }
