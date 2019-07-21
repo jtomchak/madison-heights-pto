@@ -8,12 +8,17 @@ export default ({ article }) => (
   <div className={styles.preview}>
     {/* <Img alt="" fluid={article.heroImage.fluid} /> */}
     <h3 className={styles.previewTitle}>
-      <Link to={`/post/${article.slug}`}>{article.title}</Link>
+      <Link
+        to={`/post/${article.slug}`}
+        dangerouslySetInnerHTML={{
+          __html: article.title,
+        }}
+      ></Link>
     </h3>
     <small>{article.date}</small>
     <p
       dangerouslySetInnerHTML={{
-        __html: article.content,
+        __html: article.excerpt,
       }}
     />
   </div>

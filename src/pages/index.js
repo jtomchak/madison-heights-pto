@@ -50,6 +50,7 @@ export const pageQuery = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           content
+          excerpt
         }
       }
     }

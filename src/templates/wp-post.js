@@ -5,10 +5,12 @@ import Layout from '../components/layout'
 
 const WPPostTemplate = ({ data }) => (
   <Layout>
-    <h1>{data.wordpressPost.title}</h1>
-    <p>
-      Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
-    </p>
+    <h1
+      dangerouslySetInnerHTML={{
+        __html: data.wordpressPost.title,
+      }}
+    ></h1>
+
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
@@ -24,9 +26,6 @@ export const query = graphql`
       content
       excerpt
       date(formatString: "MMMM DD, YYYY")
-      author {
-        name
-      }
     }
   }
 `
