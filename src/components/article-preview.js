@@ -16,10 +16,10 @@ export default ({ article }) => (
       ></Link>
     </h3>
     <small>{article.date}</small>
-    <p
+    <div
       dangerouslySetInnerHTML={{
         __html: `<div>${article.excerpt}</div>`,
       }}
-    />
+    ></div>
   </div>
 )
