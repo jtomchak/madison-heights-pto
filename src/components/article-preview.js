@@ -18,7 +18,7 @@ export default ({ article }) => (
     <small>{article.date}</small>
     <p
       dangerouslySetInnerHTML={{
-        __html: article.excerpt,
+        __html: `<div>${article.excerpt}</div>`,
       }}
     />
   </div>
