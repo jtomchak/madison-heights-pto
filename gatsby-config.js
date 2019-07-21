@@ -8,10 +8,16 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
-    'gatsby-transformer-remark',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-remark',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/`,
+      },
+    },
     {
       resolve: `gatsby-source-wordpress`,
       options: {

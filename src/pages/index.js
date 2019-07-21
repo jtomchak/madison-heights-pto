@@ -1,22 +1,26 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styles from './index.module.css'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import Hero from '../components/hero'
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allWordpressPost.edges')
+    const heroData = get(this, 'props.data.image.childImageSharp')
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Heights PTO</div>
+          {/* <Hero data={data.file} /> */}
+
           <div className="wrapper">
+            <Hero data={{ ...heroData, title: 'Heights PTO' }} />
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {
@@ -51,6 +55,14 @@ export const pageQuery = graphql`
           date(formatString: "MMMM Do, YYYY")
           content
           excerpt
+        }
+      }
+    }
+    image: file(relativePath: { eq: "images/madison_heights.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        fluid {
+          ...GatsbyImageSharpFluid
         }
       }
     }
