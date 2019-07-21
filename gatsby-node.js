@@ -35,10 +35,11 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
+        // Posts are considers 'articles' for content
         const Posts = result.data.allWordpressPost.edges
         Posts.forEach(post => {
           createPage({
-            path: `/post/${post.node.slug}`,
+            path: `/articles/${post.node.slug}`,
             component: WPPostTemplate,
             context: {
               id: post.node.wordpress_id,
@@ -48,8 +49,9 @@ exports.createPages = ({ graphql, actions }) => {
 
         const Pages = result.data.allWordpressPage.edges
         Pages.forEach(page => {
+          let { slug } = page.node
           createPage({
-            path: `/${page.node.slug}`,
+            path: `/${slug}`,
             component: PageTemplate,
             context: {
               id: page.node.wordpress_id,

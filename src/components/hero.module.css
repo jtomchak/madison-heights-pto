@@ -17,9 +17,10 @@
 .heroDetails {
   position: absolute;
   background: rgba(0, 0, 0, 0.7);
-  left: 40%;
   bottom: 0;
-  transform: translate(-35%, 0);
+  left: 0%;
+  right: 0%;
+  transform: translate(-20, 0);
   font-size: 14px;
   padding: 0 0.5em;
 }

@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styles from './index.module.css'
-import Layout from '../components/layout'
+import LayoutWithSiteData from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 import Hero from '../components/hero'
 
@@ -14,14 +14,20 @@ class RootIndex extends React.Component {
     const heroData = get(this, 'props.data.image.childImageSharp')
 
     return (
-      <Layout location={this.props.location}>
+      <LayoutWithSiteData location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           {/* <Hero data={data.file} /> */}
 
           <div className="wrapper">
-            <Hero data={{ ...heroData, title: 'Heights PTO' }} />
-            <h2 className="section-headline">Recent articles</h2>
+            <Hero
+              data={{
+                ...heroData,
+                title: 'Heights PTO',
+                details: 'supporting students, teachers, and parents',
+              }}
+            />
+            <h2 className="section-headline">Recent Articles</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
@@ -33,7 +39,7 @@ class RootIndex extends React.Component {
             </ul>
           </div>
         </div>
-      </Layout>
+      </LayoutWithSiteData>
     )
   }
 }
@@ -58,7 +64,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    image: file(relativePath: { eq: "images/madison_heights.jpg" }) {
+    image: file(relativePath: { eq: "images/madison_heights_building.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         fluid {

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
 
 class Template extends React.Component {
   render() {
-    const { location, children } = this.props
+    const { location, children, data } = this.props
     let header
 
     let rootPath = `/`
@@ -16,11 +16,38 @@ class Template extends React.Component {
 
     return (
       <Container>
-        <Navigation />
+        <Navigation logo={data.logo} site={data.site} />
         {children}
       </Container>
     )
   }
 }
 
-export default Template
+export default function LayoutWithSiteData(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          site {
+            siteMetadata {
+              title
+              menuLinks {
+                name
+                link
+              }
+            }
+          }
+          logo: file(relativePath: { eq: "images/Madison-Heights-Logo.png" }) {
+            childImageSharp {
+              # Specify the image processing specifications right in the query.
+              fixed(width: 100) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      `}
+      render={data => <Template data={data} {...props} />}
+    />
+  )
+}

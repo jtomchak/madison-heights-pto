@@ -5,6 +5,12 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'Madison Heights PTO',
+    menuLinks: [
+      {
+        name: 'Articles',
+        link: '/articles',
+      },
+    ],
   },
   pathPrefix: '/',
   plugins: [

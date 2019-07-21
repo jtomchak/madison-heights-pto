@@ -18,3 +18,13 @@
 .navigationItem a {
   color: currentColor;
 }
+
+/* intent is to have the logo left and the menu items on the right */
+.navigationItem:first-child {
+  margin-right: auto;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
