@@ -66,7 +66,7 @@ export default class MailChimpSubscribe extends React.Component {
           <div>Thank you! Youʼll receive your first email shortly.</div>
         ) : (
           <div>
-            <span>
+            <span className={styles.row}>
               Stay up todate and involved! Get news and opportunities to
               volunteer to your inbox!
             </span>
@@ -79,7 +79,7 @@ export default class MailChimpSubscribe extends React.Component {
                   onChange={this._handleEmailChange}
                   required
                 />
-                <div className={styles.row}>
+                <div>
                   <button
                     className={'icon-mail'}
                     type="submit"
