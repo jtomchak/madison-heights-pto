@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import styles from './index.module.css'
 import LayoutWithSiteData from '../components/layout'
 import ArticlePreview from '../components/article-preview'
+import MailChimpSubscribe from '../components/mailchimp-subscribe'
 import Hero from '../components/hero'
 
 class RootIndex extends React.Component {
@@ -17,8 +18,6 @@ class RootIndex extends React.Component {
       <LayoutWithSiteData location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          {/* <Hero data={data.file} /> */}
-
           <div className="wrapper">
             <Hero
               data={{
@@ -27,6 +26,7 @@ class RootIndex extends React.Component {
                 details: 'supporting students, teachers, and parents',
               }}
             />
+            <MailChimpSubscribe />
             <h2 className="section-headline">Recent Articles</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {

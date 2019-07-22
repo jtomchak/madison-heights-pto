@@ -25,6 +25,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint:
+          'https://heightspto.us3.list-manage.com/subscribe/post?u=257417558cbb6e604d3109ac9&amp;id=7786023a0f', // add your MC list endpoint here; see instructions below
+      },
+    },
+    {
       resolve: `gatsby-source-wordpress`,
       options: {
         // your wordpress source
