@@ -9,7 +9,7 @@ export default ({ article }) => (
     {/* <Img alt="" fluid={article.heroImage.fluid} /> */}
     <h3 className={styles.previewTitle}>
       <Link
-        to={`/post/${article.slug}`}
+        to={`/articles/${article.slug}`}
         dangerouslySetInnerHTML={{
           __html: article.title,
         }}

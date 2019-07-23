@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import styles from './post.module.css'
+import styles from './articles.module.css'
 import LayoutWithSiteData from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 

@@ -5,19 +5,29 @@ import Layout from '../components/layout'
 
 const WPPostTemplate = ({ data }) => (
   <Layout>
-    <h1
-      dangerouslySetInnerHTML={{
-        __html: data.wordpressPost.title,
-      }}
-    ></h1>
+    <div style={styles.wrapper}>
+      <h1
+        dangerouslySetInnerHTML={{
+          __html: data.wordpressPost.title,
+        }}
+      ></h1>
 
-    <div
-      style={{ marginTop: 20 }}
-      dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
-    />
+      <div
+        style={{ marginTop: 20 }}
+        dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
+      />
+    </div>
   </Layout>
 )
 export default WPPostTemplate
+
+const styles = {
+  wrapper: {
+    width: 'calc(100% - 10vmin)',
+    margin: '0 auto',
+    padding: '5vmin 0',
+  },
+}
 
 export const query = graphql`
   query($id: Int!) {
