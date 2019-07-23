@@ -27,7 +27,7 @@ class RootIndex extends React.Component {
               }}
             />
             <MailChimpSubscribe />
-            <h2 className="section-headline">Recent Articles</h2>
+            <h2 className="section-headline">Articles</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
