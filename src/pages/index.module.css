@@ -8,3 +8,61 @@
   font-size: 2em;
   overflow: hidden;
 }
+
+.btnFacebook {
+  background: #3b5998;
+  border-radius: 0;
+  color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #263961;
+}
+.btnFacebook:link,
+.btn-facebook:visited {
+  color: #fff;
+}
+.btnFacebook:active,
+.btnFacebook:hover {
+  background: #263961;
+  color: #fff;
+}
+
+.btnArea {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  max-width: 90%;
+}
+.btnArea a {
+  background: #999;
+  padding: 1em 2.4em;
+  font-size: 0.9em;
+  margin: 1em;
+  color: white;
+  text-decoration: none;
+  flex-grow: 1;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .btnArea {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+  .btnArea > * {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+  aside {
+    -webkit-order: -1;
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .btnArea {
+    flex-direction: column;
+  }
+}

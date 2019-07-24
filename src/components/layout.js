@@ -4,6 +4,18 @@ import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  fab,
+  faGithubAlt,
+  faGoogle,
+  faFacebook,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faCheckSquare, faCoffee, faFacebook)
+
 class Template extends React.Component {
   render() {
     const { location, children, data } = this.props

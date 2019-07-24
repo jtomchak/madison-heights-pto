@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './index.module.css'
 import LayoutWithSiteData from '../components/layout'
 import ArticlePreview from '../components/article-preview'
@@ -27,6 +28,28 @@ class RootIndex extends React.Component {
               }}
             />
             <MailChimpSubscribe />
+            {/* <h2 className="section-headline">Upcoming Events</h2> */}
+            <div className={styles.btnArea}>
+              <a
+                href="https://sites.google.com/view/mhpto-volunteer-opps/home"
+                target="_blank"
+                rel="noopener norefferer"
+              >
+                Volunteer Opportunities
+              </a>
+              <a
+                href="https://www.facebook.com/HeightsPTO/"
+                title="Facebook"
+                className={styles.btnFacebook}
+              >
+                <FontAwesomeIcon
+                  icon={['fab', 'facebook-f']}
+                  style={{ marginRight: '5px' }}
+                />
+                Join Us on Facebook
+              </a>
+            </div>
+
             <h2 className="section-headline">Articles</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {
