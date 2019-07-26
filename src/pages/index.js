@@ -37,8 +37,8 @@ class RootIndex extends React.Component {
               >
                 Volunteer Opportunities
               </a>
-              {/* <a
-                href="https://www.facebook.com/HeightsPTO/"
+              <a
+                href="https://www.facebook.com/heightspto/"
                 title="Facebook"
                 className={styles.btnFacebook}
               >
@@ -47,7 +47,7 @@ class RootIndex extends React.Component {
                   style={{ marginRight: '5px' }}
                 />
                 Join Us on Facebook
-              </a> */}
+              </a>
             </div>
 
             <h2 className="section-headline">Articles</h2>
